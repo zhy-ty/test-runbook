@@ -1,0 +1,14 @@
+{
+  "name": "test-runbook-marketplace",
+  "description": "test-runbook 的 marketplace：需求 → 冷启动可执行的页面测试 runbook → 新会话执行与 close-out 回传",
+  "owner": {
+    "name": "zhy-ty"
+  },
+  "plugins": [
+    {
+      "name": "test-runbook",
+      "source": "./",
+      "description": "把需求变成可交接的页面测试流程文档（runbook），执行会话靠一份文档冷启动跑完并回传 close-out"
+    }
+  ]
+}
