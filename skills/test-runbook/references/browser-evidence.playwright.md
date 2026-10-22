@@ -37,13 +37,14 @@ npx playwright test --list
 
 ## 登录态
 
-- 从真实 Chrome 导出 storageState，按“凭据按来源”记进环境文档；storageState 文件不进 git，过期就重新导出。
+- **优先用 setup project 自动登录**：账号从 `E2E_USERNAME` / `E2E_PASSWORD` 环境变量读，登录成功后 `context.storageState({ path: 'auth.json' })`；`playwright.config.*` 里让业务 project 用 `storageState: 'auth.json'` 并声明 `dependencies: ['setup']`。这样不需要人工 codegen。
+- 只有验证码、SSO、动态口令这类无法脚本化的登录，才退回人工 `codegen` 或已登录的 CDP profile：
 
 ```bash
 npx playwright codegen --save-storage=auth.json "<被测入口URL>"
 ```
 
-- 在 `playwright.config.*` 里用 `storageState: 'auth.json'`；`auth.json` 加进 `.gitignore`。
+- `auth.json` 含 cookie/localStorage，加进 `.gitignore`，不要提交或粘贴到聊天里；登录态过期就重跑 setup。
 - 用独立 profile 时不要和默认 profile 同时开同一个用户目录；会锁目录或丢登录态。
 - 登录态失效按环境文档#凭据重登，并往发现台账追加一行（类型=坑）。
 
@@ -55,6 +56,7 @@ npx playwright codegen --save-storage=auth.json "<被测入口URL>"
 - **虚拟列表**：只渲染可见行，先滚动/筛选让目标行进入视口。
 - **延迟渲染**：用 `waitFor`/`expect(locator).toBeVisible()` 等条件，不用固定 sleep 猜。
 - **条件按钮**：`v-if`/`ifShow` 只在特定行出现；观测点要写明哪一行、什么状态下看。
+- **中文按钮的可访问名**：Ant Design 等组件会在两个中文字之间插空格，例如按钮名是“登 录”而不是“登录”；用正则 `/登\s*录/`，不要用精确文本。
 - **缓存与 keepAlive**：改库后页面可能不重新请求，先硬刷新或切路由再读。
 
 ## 复用
