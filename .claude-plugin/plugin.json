@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "test-runbook",
-  "description": "把需求变成可交接的页面测试流程文档：环境文档与通道探测 → 需求快照 → 定位被测页面 → 脚本档决策 → 按用户旅程拆 runbook → 新会话冷启动执行 → close-out 回传",
-  "version": "0.2.0",
+  "description": "把需求变成可交接的页面测试流程文档：环境文档与通道探测（含本地 Playwright）→ 需求快照 → 定位被测页面 → 执行档决策（实探/合段断言/脚本档）→ 按用户旅程拆 runbook → 新会话冷启动执行 → close-out 回传",
+  "version": "0.2.1",
   "author": {
     "name": "zhy-ty"
   },
