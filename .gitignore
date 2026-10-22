@@ -1,2 +1,3 @@
 .idea/
-docs/testing/
+docs/testing/*
+!docs/testing/_lib/
