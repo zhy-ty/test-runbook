@@ -1,6 +1,6 @@
 {
   "name": "test-runbook-marketplace",
-  "description": "test-runbook 的 marketplace：需求 → 冷启动可执行的页面测试 runbook → 新会话执行与 close-out 回传",
+  "description": "test-runbook 的 marketplace：需求 → 冷启动可执行的页面测试 runbook → 新会话执行与 close-out 回传；默认 Playwright 执行、CDP 只读诊断、dev-smoke 档",
   "owner": {
     "name": "zhy-ty"
   },
@@ -8,7 +8,7 @@
     {
       "name": "test-runbook",
       "source": "./",
-      "description": "把需求变成可交接的页面测试流程文档（runbook），执行会话靠一份文档冷启动跑完并回传 close-out"
+      "description": "把需求变成可交接的页面测试流程文档（runbook），执行会话靠一份契约 + 一份文档冷启动跑完并回传 close-out"
     }
   ]
 }
